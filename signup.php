@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Signup Here</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js">
+  </script>
     <link rel="stylesheet" href="bootstrap.min.css">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="signupstyle.css">
     <script>
         function validateForm() {
             var fullname = document.forms["signupForm"]["fullname"].value;
@@ -29,19 +31,19 @@
 </head>
 <body>
     <div class="container">
-        <form name="signupForm" action="login.php" method="post" onsubmit="return validateForm()" class="bg-light p-4 rounded">
+        <form name="signupForm" class="bg-light p-4 rounded">
             <h2 class="text-center mb-4">Register</h2>
             <div class="mb-3">
-                <input type="text" class="form-control" name="fullname" placeholder="Full Name:" required>
+                <input type="text" class="form-control" id="fullname" name="fullname" placeholder="Full Name:" required>
             </div>
             <div class="mb-3">
-                <input type="email" class="form-control" name="email" placeholder="Email:" required>
+                <input type="email" class="form-control" id="email" name="email" placeholder="Email:" required>
             </div>
             <div class="mb-3">
-                <input type="password" class="form-control" name="password" placeholder="Password:" required>
+                <input type="password" class="form-control" id="password" name="password" placeholder="Password:" required>
             </div>
             <div class="mb-3">
-                <input type="password" class="form-control" name="confirm_password" placeholder="Confirm Password:" required>
+                <input type="password" class="form-control" id="confirmpassword" name="confirm_password" placeholder="Confirm Password:" required>
             </div>
             <div class="form-btn">
                 <button type="submit" class="btn btn-primary w-100 bg-info text-white">Register</button>
@@ -49,5 +51,31 @@
             </div>
         </form>
     </div>
+
+
+    <script>
+    $(document).ready(function() {
+      $("form").submit(function(event) {
+        
+        event.preventDefault();
+
+        $.ajax({
+          type: "POST",
+          url: "savesignupdata.php",
+          data:{
+            fullname:$("#fullname").val(),
+            email:$("#email").val(),
+            password:$("#password").val(),
+            confirmpassword:$("#confirmpassword").val()
+        },
+          success: function(response) {
+            console.log(response);
+          }
+        })
+
+      });
+    });
+  </script>
+
 </body>
 </html>

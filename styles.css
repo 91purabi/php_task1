@@ -1,9 +1,36 @@
-body{
-    padding: 50px;
-}
+body {
+    background-color: #b3d9d9;
+  }
 
-.container{
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 50px;
-}
+  .container {
+    height: 100vh;
+  }
+
+  .card {
+    width: 25%;
+    margin: auto;
+  }
+
+  @media (max-width: 768px) {
+    .card {
+      width: 80%;
+    }
+  }
+
+  .card-header {
+    text-align: center;
+  }
+
+  .form-group {
+    margin-bottom: 1rem;
+  }
+
+  .btn-primary {
+    background-color: #007bff;
+    color: #fff;
+  }
+
+  .footer {
+    margin-top: 1rem;
+    text-align: center;
+  }
