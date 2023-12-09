@@ -1,13 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Employee Login</title>
-   <link rel="stylesheet" href="bootstrap.css">
-   <link rel="stylesheet" href="bootstrap.min.css">
-   </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js">
+  </script>
+  <link rel="stylesheet" href="bootstrap.css">
+  <link rel="stylesheet" href="bootstrap.min.css">
+
 </head>
+
 <body class="background" style="background-color: #b3d9d9;">
   <div class="container  vh-100">
     <div class="row justify-content-center h-100">
@@ -16,22 +20,49 @@
           Employee Login
         </div>
         <div class="card-body">
-          <form action="" method="" class="was-validated">
+          <form class="was-validated">
             <div class="form-group">
               <label for="username">Username</label>
-              <input type="username" id="username" class="form-control rounded" name="uname" required/>
+              <input type="username" id="username" class="form-control rounded" name="uname" required />
             </div>
             <div class="form-group">
               <label for="password">Password</label>
               <input type="password" id="password" class="form-control rounded" name="pswd" required />
             </div>
-          <input type="submit" class="btn btn-primary w-100 bg-info text-white" value="Login" name="">
-          <div class="footer">New User? <a href="signup.php">Sign up</a>
-        </div>
+            <input type="submit" class="btn btn-primary w-100 bg-info text-white" value="Login" name="">
+            <div class="footer">New User? <a href="signup.php">Sign up</a>
+            </div>
           </form>
         </div>
       </div>
     </div>
   </div>
-</body>
+
+  <script>
+    $(document).ready(function() {
+      $("form").submit(function(event) {
+        
+        event.preventDefault();
+
+        $.ajax({
+          type: "POST",
+          url: "checkLogin.php",
+          data:{username:$("#username").val(),password:$("#password").val()},
+          success: function(response) {
+            //var returnedData = JSON.parse(response);
+            console.log(response);
+          }
+        })
+
+      });
+    });
+  </script>
+  </head>
+
+  <body>
+ 
+
+
+  </body>
+
 </html>

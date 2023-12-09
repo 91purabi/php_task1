@@ -29,7 +29,7 @@
 </head>
 <body>
     <div class="container">
-        <form name="signupForm" action="signup.php" method="post" onsubmit="return validateForm()" class="bg-light p-4 rounded">
+        <form name="signupForm" action="login.php" method="post" onsubmit="return validateForm()" class="bg-light p-4 rounded">
             <h2 class="text-center mb-4">Register</h2>
             <div class="mb-3">
                 <input type="text" class="form-control" name="fullname" placeholder="Full Name:" required>
