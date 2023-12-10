@@ -23,9 +23,10 @@
         <div class="card-body">
           <form class="was-validated">
             <div class="form-group">
-              <label for="username">Username</label>
-              <input type="username" id="username" class="form-control rounded" name="uname" required />
+              <label for="mobile_number">Mobile Number</label>
+              <input type="tel" id="mobile_number" class="form-control rounded" name="mobile_number" pattern="[0-9]+" title="Please enter only numbers" required />
             </div>
+
             <div class="form-group">
               <label for="password">Password</label>
               <input type="password" id="password" class="form-control rounded" name="pswd" required />
@@ -42,16 +43,26 @@
   <script>
     $(document).ready(function() {
       $("form").submit(function(event) {
-        
+
         event.preventDefault();
 
         $.ajax({
           type: "POST",
           url: "checkLogin.php",
-          data:{username:$("#username").val(),password:$("#password").val()},
+          data: {
+            mobilenum: $("#mobile_number").val(),
+            password: $("#password").val()
+          },
           success: function(response) {
             //var returnedData = JSON.parse(response);
             console.log(response);
+            if(response == 'Success'){
+              //alert ("Valid user")
+              window.location='./success.php';
+
+            } else {
+              alert ("Invalid user")
+            }
           }
         })
 
@@ -61,7 +72,7 @@
   </head>
 
   <body>
- 
+
 
 
   </body>

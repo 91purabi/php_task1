@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="bootstrap.min.css">
     <link rel="stylesheet" href="signupstyle.css">
     <script>
+
+        // Javascript function for form validation
         function validateForm() {
             var fullname = document.forms["signupForm"]["fullname"].value;
             var email = document.forms["signupForm"]["email"].value;
@@ -40,6 +42,9 @@
                 <input type="email" class="form-control" id="email" name="email" placeholder="Email:" required>
             </div>
             <div class="mb-3">
+                <input type="text" class="form-control" id="mobile_number" name="mobile_number" placeholder="Mobile number:" required>
+            </div>
+            <div class="mb-3">
                 <input type="password" class="form-control" id="password" name="password" placeholder="Password:" required>
             </div>
             <div class="mb-3">
@@ -65,11 +70,21 @@
           data:{
             fullname:$("#fullname").val(),
             email:$("#email").val(),
+            mob_no:$("#mobile_number").val(),
             password:$("#password").val(),
             confirmpassword:$("#confirmpassword").val()
         },
           success: function(response) {
             console.log(response);
+            if(response.trim()=="Success"){
+                location.reload()
+            }else if(response.trim()=='Exist'){
+                alert('User already exist')
+            }
+            else{
+                alert('Error!')
+            }
+
           }
         })
 
