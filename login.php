@@ -29,8 +29,10 @@
 
             <div class="form-group">
               <label for="password">Password</label>
-              <input type="password" id="password" class="form-control rounded" name="pswd" required />
+              <input type="password" id="password" class="form-control rounded" name="pswd" pattern=".{8,}" title="Password must be at least 8 characters long" required />
+              <div class="invalid-feedback">Password must be at least 8 characters long.</div>
             </div>
+
             <input type="submit" class="btn btn-primary w-100 bg-info text-white" value="Login" name="">
             <div class="footer">New User? <a href="signup.php">Sign up</a>
             </div>
@@ -56,12 +58,12 @@
           success: function(response) {
             //var returnedData = JSON.parse(response);
             console.log(response);
-            if(response == 'Success'){
+            if (response == 'Success') {
               //alert ("Valid user")
-              window.location='./success.php';
+              window.location = './success.php';
 
             } else {
-              alert ("Invalid user")
+              alert("Invalid user")
             }
           }
         })

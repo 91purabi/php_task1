@@ -12,7 +12,6 @@ $db_con = mysqli_connect($servername, $username, $password, $database_name);
 $fullname = $_POST['fullname'];
 $mob_num = $_POST['mob_no'];
 $user_password = $_POST['password'];
-$email = $_POST['email'];
 $confirmpassword = $_POST['confirmpassword'];
 
 $qryCheck = "select count(*) as count from employee_details where mobile_number='" . $mob_num . "'";
