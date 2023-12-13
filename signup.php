@@ -82,7 +82,8 @@
                     success: function(response) {
                         console.log(response);
                         if (response.trim() == "Success") {
-                            location.reload()
+                            window.location = './login.php';
+                            
                         } else if (response.trim() == 'Exist') {
                             alert('User already exist')
                         } else {
